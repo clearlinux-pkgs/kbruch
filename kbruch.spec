@@ -5,22 +5,21 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kbruch
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kbruch-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kbruch-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kbruch-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kbruch-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kbruch-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kbruch-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: kbruch-bin
-Requires: kbruch-data
-Requires: kbruch-license
-Requires: kbruch-locales
-Requires: kbruch-man
+Requires: kbruch-bin = %{version}-%{release}
+Requires: kbruch-data = %{version}-%{release}
+Requires: kbruch-license = %{version}-%{release}
+Requires: kbruch-locales = %{version}-%{release}
+Requires: kbruch-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : kcrash-dev
 
 %description
 Please see: http://edu.kde.org/kbruch/
@@ -28,9 +27,9 @@ Please see: http://edu.kde.org/kbruch/
 %package bin
 Summary: bin components for the kbruch package.
 Group: Binaries
-Requires: kbruch-data
-Requires: kbruch-license
-Requires: kbruch-man
+Requires: kbruch-data = %{version}-%{release}
+Requires: kbruch-license = %{version}-%{release}
+Requires: kbruch-man = %{version}-%{release}
 
 %description bin
 bin components for the kbruch package.
@@ -47,7 +46,7 @@ data components for the kbruch package.
 %package doc
 Summary: doc components for the kbruch package.
 Group: Documentation
-Requires: kbruch-man
+Requires: kbruch-man = %{version}-%{release}
 
 %description doc
 doc components for the kbruch package.
@@ -78,26 +77,26 @@ man components for the kbruch package.
 
 
 %prep
-%setup -q -n kbruch-18.08.0
+%setup -q -n kbruch-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535170362
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549863330
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535170362
+export SOURCE_DATE_EPOCH=1549863330
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kbruch
-cp COPYING %{buildroot}/usr/share/doc/kbruch/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kbruch/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kbruch
+cp COPYING %{buildroot}/usr/share/package-licenses/kbruch/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kbruch/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -240,12 +239,12 @@ popd
 /usr/share/doc/HTML/uk/kbruch/statistics.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kbruch/COPYING
-/usr/share/doc/kbruch/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kbruch/COPYING
+/usr/share/package-licenses/kbruch/COPYING.DOC
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/kbruch.1
 /usr/share/man/de/man1/kbruch.1
 /usr/share/man/es/man1/kbruch.1

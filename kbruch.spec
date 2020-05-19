@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kbruch
-Version  : 20.04.0
-Release  : 19
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/kbruch-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kbruch-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kbruch-20.04.0.tar.xz.sig
-Summary  : Exercise Fractions
+Version  : 20.04.1
+Release  : 20
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/kbruch-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kbruch-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kbruch-20.04.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
 Requires: kbruch-bin = %{version}-%{release}
@@ -20,6 +20,7 @@ Requires: kbruch-locales = %{version}-%{release}
 Requires: kbruch-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
 
 %description
 Please see: https://edu.kde.org/kbruch/
@@ -76,36 +77,35 @@ man components for the kbruch package.
 
 
 %prep
-%setup -q -n kbruch-20.04.0
-cd %{_builddir}/kbruch-20.04.0
+%setup -q -n kbruch-20.04.1
+cd %{_builddir}/kbruch-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587677696
+export SOURCE_DATE_EPOCH=1589850063
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587677696
+export SOURCE_DATE_EPOCH=1589850063
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbruch
-cp %{_builddir}/kbruch-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kbruch/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/kbruch-20.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kbruch/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/kbruch-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/kbruch/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/kbruch-20.04.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/kbruch/1bd373e4851a93027ba70064bd7dbdc6827147e1
 pushd clr-build
 %make_install
 popd

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kbruch
-Version  : 21.12.3
-Release  : 38
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/kbruch-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/kbruch-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/kbruch-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 39
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/kbruch-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/kbruch-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/kbruch-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GFDL-1.2 GPL-2.0
@@ -21,6 +21,7 @@ Requires: kbruch-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
+BuildRequires : kdoctools-dev
 
 %description
 Please see: https://edu.kde.org/kbruch/
@@ -77,15 +78,15 @@ man components for the kbruch package.
 
 
 %prep
-%setup -q -n kbruch-21.12.3
-cd %{_builddir}/kbruch-21.12.3
+%setup -q -n kbruch-22.04.0
+cd %{_builddir}/kbruch-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646539969
+export SOURCE_DATE_EPOCH=1650673092
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -101,12 +102,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646539969
+export SOURCE_DATE_EPOCH=1650673092
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbruch
-cp %{_builddir}/kbruch-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kbruch/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/kbruch-21.12.3/LICENSES/GFDL-1.2-only.txt %{buildroot}/usr/share/package-licenses/kbruch/7b300def279cc0c38b84d3351f68d558cc01ad61
-cp %{_builddir}/kbruch-21.12.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kbruch/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kbruch-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kbruch/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/kbruch-22.04.0/LICENSES/GFDL-1.2-only.txt %{buildroot}/usr/share/package-licenses/kbruch/7b300def279cc0c38b84d3351f68d558cc01ad61
+cp %{_builddir}/kbruch-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kbruch/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
@@ -238,6 +239,19 @@ popd
 /usr/share/doc/HTML/pt_BR/kbruch/reduced.png
 /usr/share/doc/HTML/pt_BR/kbruch/settings.png
 /usr/share/doc/HTML/pt_BR/kbruch/statistics.png
+/usr/share/doc/HTML/ru/kbruch/checked.png
+/usr/share/doc/HTML/ru/kbruch/compare.png
+/usr/share/doc/HTML/ru/kbruch/convert.png
+/usr/share/doc/HTML/ru/kbruch/factorize.png
+/usr/share/doc/HTML/ru/kbruch/gui_main.png
+/usr/share/doc/HTML/ru/kbruch/gui_mode.png
+/usr/share/doc/HTML/ru/kbruch/index.cache.bz2
+/usr/share/doc/HTML/ru/kbruch/index.docbook
+/usr/share/doc/HTML/ru/kbruch/learning.png
+/usr/share/doc/HTML/ru/kbruch/percentage.png
+/usr/share/doc/HTML/ru/kbruch/reduced.png
+/usr/share/doc/HTML/ru/kbruch/settings.png
+/usr/share/doc/HTML/ru/kbruch/statistics.png
 /usr/share/doc/HTML/sv/kbruch/checked.png
 /usr/share/doc/HTML/sv/kbruch/compare.png
 /usr/share/doc/HTML/sv/kbruch/convert.png

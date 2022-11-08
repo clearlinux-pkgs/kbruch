@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kbruch
-Version  : 22.08.2
-Release  : 45
-URL      : https://download.kde.org/stable/release-service/22.08.2/src/kbruch-22.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.2/src/kbruch-22.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.2/src/kbruch-22.08.2.tar.xz.sig
+Version  : 22.08.3
+Release  : 46
+URL      : https://download.kde.org/stable/release-service/22.08.3/src/kbruch-22.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.3/src/kbruch-22.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.3/src/kbruch-22.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GFDL-1.2 GPL-2.0
@@ -78,15 +78,15 @@ man components for the kbruch package.
 
 
 %prep
-%setup -q -n kbruch-22.08.2
-cd %{_builddir}/kbruch-22.08.2
+%setup -q -n kbruch-22.08.3
+cd %{_builddir}/kbruch-22.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1665721136
+export SOURCE_DATE_EPOCH=1667879937
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,7 +102,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1665721136
+export SOURCE_DATE_EPOCH=1667879937
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbruch
 cp %{_builddir}/kbruch-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kbruch/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
@@ -124,6 +124,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.kbruch.desktop
 /usr/share/config.kcfg/kbruch.kcfg
+/usr/share/icons/hicolor/128x128/apps/kbruch.png
 /usr/share/icons/hicolor/16x16/apps/kbruch.png
 /usr/share/icons/hicolor/22x22/apps/kbruch.png
 /usr/share/icons/hicolor/32x32/apps/kbruch.png
